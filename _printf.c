@@ -6,10 +6,6 @@ void print_char(va_list a)
 	printf("X");
 }
 
-void print_string(va_list a)
-{
-	printf("z");
-}
 /**
  * _printf - main function printf according the format
  * @format: the string given
@@ -35,8 +31,15 @@ int _printf(const char *format, ...)
 			for (y = 0; arr[y].identifier != NULL; y++)
 			{
 					if (format[i] == *arr[y].identifier)
-						printf("bien joué");
+					{;
+						arr[y].ptr_f(args);
+					}
 			}
+		}
+		if (format[i + 1] != '\0')
+		{
+	    i++;
+	    _putchar(format[i]);
 		}
 	}
 	return (counter);
