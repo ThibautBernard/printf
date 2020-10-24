@@ -8,10 +8,11 @@
  *
  * Return: int i
  */
-int _print_count(int i, char format, int counter)
+int _print_count(char format, int counter)
 {
+	counter++;
 	_putchar(format);
-	return(counter++);
+	return(counter);
 }
 
 /**
@@ -22,11 +23,7 @@ int _print_count(int i, char format, int counter)
 int _printf(const char *format, ...)
 {
 	int i, y, counter = 0, sum = 0;
-	filt arr[] = {
-			{"c", print_char},
-			{"s", print_string},
-			{NULL, NULL}
-		};
+	filt arr[] = {{"c", print_char},{"s", print_string},{NULL, NULL}};
 	va_list args;
 
 	va_start(args, format);
@@ -45,15 +42,15 @@ int _printf(const char *format, ...)
 						{	
 							i++;
 							if (format[i] != '%')
-								counter += _print_count(i, format[i], counter);
+								counter = _print_count(format[i], counter);
 						}
 					}
 			}
 			if (format[i] == '%')
-				counter += _print_count(i, format[i], counter);
+				counter = _print_count(format[i], counter);
 		}
-		else
-			counter += _print_count(i, format[i], counter);
+		else if (format[i] != '%' || format[i + 1] != '\0')
+			counter = _print_count(format[i], counter);
 	}
 	return (counter);
 }
