@@ -6,10 +6,11 @@
  *
  * Return: void
  */
-void print_char(va_list valist)
+int print_char(va_list valist)
 {
 	char c;
+	
 	c = va_arg(valist, int);
 	_putchar(c);
-	_putchar('\n');
+	return (1);
 }

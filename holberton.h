@@ -6,13 +6,13 @@ int _printf(const char *format, ...);
 typedef struct filter
 {
 	char *identifier;
-	void (*ptr_f)(va_list);
+	int (*ptr_f)(va_list);
 } filt;
 
 int _putchar(char c);
+int _strlen(char *s);
+int print_char(va_list);
 
-void print_char(va_list);
-
-void print_string(va_list arg);
+int print_string(va_list arg);
 
 #endif
