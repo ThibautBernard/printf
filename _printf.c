@@ -1,5 +1,18 @@
 #include "holberton.h"
 #include <stdio.h>
+/**
+ * _print_count - print char and incremente the counter
+ *
+ * @i: int
+ * @counter: int
+ *
+ * Return: int i
+ */
+int _print_count(int i, char format, int counter)
+{
+	_putchar(format);
+	return(counter++);
+}
 
 /**
  * _printf - main function printf according the format
@@ -32,24 +45,15 @@ int _printf(const char *format, ...)
 						{	
 							i++;
 							if (format[i] != '%')
-							{
-								counter++;
-								_putchar(format[i]);
-							}
+								counter += _print_count(i, format[i], counter);
 						}
 					}
 			}
 			if (format[i] == '%')
-			{
-				counter++;
-				_putchar(format[i]);
-			}
+				counter += _print_count(i, format[i], counter);
 		}
 		else
-		{
-			counter++;
-	    _putchar(format[i]);
-		}
+			counter += _print_count(i, format[i], counter);
 	}
 	return (counter);
 }
