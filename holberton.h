@@ -10,4 +10,5 @@ typedef struct filter
 } filt;
 
 int _putchar(char c);
+void print_string(va_list arg);
 #endif
