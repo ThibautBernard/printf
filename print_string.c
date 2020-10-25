@@ -4,7 +4,7 @@
  *
  * Return: length of (null)
  */
-int print_str(void)
+int print_null(void)
 {
 	int i = 0;
 	char *string = "(null)";
@@ -30,7 +30,7 @@ int print_string(va_list arg)
 
 	if (ptr == NULL)
 	{
-		j = print_str();
+		j = print_null();
 		return (j);
 	}
 	else
