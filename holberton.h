@@ -24,4 +24,5 @@ int print_string(va_list arg);
 int print_null(void);
 int print_binary(va_list arg);
 int print_rot13(va_list a);
+int print_reverse(va_list a);
 #endif
