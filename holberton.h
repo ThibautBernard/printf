@@ -2,6 +2,7 @@
 #define _HOLBERTON_H
 #include <stdarg.h>
 
+#include <stdlib.h>
 int _printf(const char *format, ...);
 typedef struct filter
 {
@@ -15,4 +16,9 @@ int print_char(va_list);
 
 int print_string(va_list arg);
 
+int print_decimal(va_list arg);
+
+int print_unsigned(va_list arg);
+
+int print_octal(va_list arg);
 #endif
