@@ -12,7 +12,6 @@ char *rot13(char *s)
 	char *string_to_fill;
 
 	length = _strlen(s);
-
 	string_to_fill = malloc(sizeof(char) * (length + 1));
 	i = 0;
 	while (s[i] != '\0')
@@ -52,5 +51,6 @@ int print_rot13(va_list a)
 	{
 		_putchar(str_formated[i]);
 	}
+	free(str_formated);
 	return (i);
 }
