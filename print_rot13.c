@@ -1,4 +1,21 @@
 #include "holberton.h"
+
+/**
+ * check_alphab - check if other than alphab
+ * @s: string to check
+ * Return: 1 if other than alphab
+ */
+int check_alphab(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if ((s[i] <= 'a' && s[i] >= 'z') || (s[i] <= 'A' && s[i] >= 'Z'))
+			return (1);
+	}
+	return (0);
+}
 /**
  * *rot13 - convert alphab *13
  * @s: string given to convert
@@ -42,10 +59,10 @@ int print_rot13(va_list a)
 	char *str_formated;
 	int i;
 
+	if (check_alphab(s) == 1)
+		return (0);
 	if (s == NULL)
-	{
 		return (print_null());
-	}
 	str_formated = rot13(s);
 	for (i = 0; str_formated[i] != '\0'; i++)
 	{
