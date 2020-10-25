@@ -54,28 +54,6 @@ int *fill_array_positive(int *array, int n)
 	return (array);
 }
 /**
- * *fill_array_negative - convert number in binary &&
- * fill array of 0 or 1, only if the n is negative
- * @array: the array to fill
- * @n: number
- * Return: the array filled
- */
-int *fill_array_negative(int *array, int n)
-{
-	int i;
-
-	i = 0;
-	while (n > 0)
-	{
-		array[i] = (n % 2);
-		n = (n / 2);
-		i++;
-	}
-	array[i] = 1;
-	array[i + 1] = '\0';
-	return (array);
-}
-/**
  * print_binary - main function to convert decimal to
  * binary
  * @arg: the number to convert
@@ -83,28 +61,16 @@ int *fill_array_negative(int *array, int n)
  */
 int print_binary(va_list arg)
 {
-	int i, tmp = 0, counter = 0, n = va_arg(arg, int), *array;
+	int i, counter = 0, *array, n = va_arg(arg, int);
 
 	i = 0;
-	tmp = n;
-	if (n < 0)
-		tmp = tmp * -1;
-	while (_pow_recursion(2, i) <= tmp)
+	while (_pow_recursion(2, i) <= n)
 	{
 		counter++;
 		i++;
 	}
-	if (n < 0)
-	{
-		counter += 1;
-		array = malloc(sizeof(int) * (counter + 1));
-		print_rev_array((counter - 1), fill_array_negative(array, tmp));
-	}
-	else
-	{
-		array = malloc(sizeof(int) * (counter + 1));
-		print_rev_array((counter - 1), fill_array_positive(array, n));
-	}
+	array = malloc(sizeof(int) * (counter + 1));
+	print_rev_array((counter - 1), fill_array_positive(array, n));
 	free(array);
-	return ((counter - 1));
+	return (counter);
 }

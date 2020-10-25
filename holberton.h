@@ -22,10 +22,6 @@ int print_char(va_list);
 int print_decimal(va_list);
 int print_string(va_list arg);
 
-int print_unsigned(va_list arg);
-
-int print_octal(va_list arg);
-
 int print_binary(va_list arg);
 
 #endif
