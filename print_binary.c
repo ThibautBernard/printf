@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  * _pow_recursion - number pow
  * @x: number given
@@ -64,6 +65,13 @@ int print_binary(va_list arg)
 	int i, counter = 0, *array, n = va_arg(arg, int);
 
 	i = 0;
+	if (n == 0)
+	{
+		_putchar('0');
+		return (0);
+	}
+	if (n < 0)
+		return (0);
 	while (_pow_recursion(2, i) <= n)
 	{
 		counter++;
