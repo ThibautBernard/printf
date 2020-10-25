@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * print_decimal - prints decimal
+ *
+ * @args: va_list
+ *
+ * Return: counter, length of the decimal
+ */
 int print_decimal(va_list args)
 {
 	unsigned int number, power = 1;
