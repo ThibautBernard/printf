@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 {
 	int i, y, counter = 0, sum = 0;
 	filt arr[] = {{"c", print_char}, {"s", print_string}, {"d", print_decimal},
-{"i", print_decimal}, {NULL, NULL}};
+{"i", print_decimal}, {"b", print_binary}, {NULL, NULL}};
 	va_list args;
 
 	va_start(args, format);
