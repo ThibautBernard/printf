@@ -21,7 +21,7 @@ int _strlen(char *s);
 int print_char(va_list);
 int print_decimal(va_list);
 int print_string(va_list arg);
-
+int print_null(void);
 int print_binary(va_list arg);
-
+int print_rot13(va_list a);
 #endif
