@@ -21,12 +21,12 @@ int _printf(const char *format, ...)
 {
 	int i, y, counter = 0, sum = 0;
 	filt arr[] = {{"c", print_char}, {"s", print_string}, {"d", print_decimal},
-		      {"i", print_decimal}, {"u", print_unsigned}, {"o", print_octal},
+		      {"i", print_decimal}, {"b", print_binary}, {"u", print_unsigned}, {"o", print_octal},
 		      {NULL, NULL}};
 	va_list args;
 
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
