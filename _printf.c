@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 	filt arr[] = {{"c", print_char}, {"s", print_string}, {"d", print_decimal},
 {"i", print_decimal}, {"b", print_binary}, {"u", print_unsigned},
 {"o", print_octal}, {"x", print_hexa}, {"X", print_hexaUpper},
-{"R", print_rot13}, {"r", print_reverse},
+{"R", print_rot13}, {"r", print_reverse}, {"S", print_string_non_printable},
 {NULL, NULL}};
 
 	va_list args;
