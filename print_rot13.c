@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 /**
  * check_alphab - check if other than alphab
  * @s: string to check
@@ -61,7 +60,9 @@ int print_rot13(va_list a)
 	char *str_formated;
 	int i;
 
-	if (s == NULL || check_alphab(s) == 0)
+	if (check_alphab(s) == 0)
+		return (0);
+	if (s == NULL)
 		return (print_null());
 	str_formated = rot13(s);
 	for (i = 0; str_formated[i] != '\0'; i++)

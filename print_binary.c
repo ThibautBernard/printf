@@ -84,6 +84,8 @@ int print_binary(va_list arg)
 	int i = 0;
 	char *array;
 
+	if (n > 4294967295)
+		n = 4294967295;
 	if (n == 0)
 	{
 		_putchar(n + '0');
