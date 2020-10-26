@@ -61,10 +61,13 @@ int print_rot13(va_list a)
 	if (s == NULL)
 		return (print_null());
 	str_formated = rot13(s);
-	for (i = 0; str_formated[i] != '\0'; i++)
+	if (str_formated != NULL)
 	{
-		_putchar(str_formated[i]);
+		for (i = 0; str_formated[i] != '\0'; i++)
+		{
+			_putchar(str_formated[i]);
+		}
+		free(str_formated);
 	}
-	free(str_formated);
 	return (i);
 }

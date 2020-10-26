@@ -5,7 +5,7 @@
  * @y: power
  * Return: number
  */
-unsigned long int _pow_recursion(unsigned long int x, unsigned long int y)
+unsigned long int _pow_recursion(unsigned int x, unsigned int y)
 {
 	if (y > 0)
 	{
@@ -20,9 +20,9 @@ unsigned long int _pow_recursion(unsigned long int x, unsigned long int y)
  * @array: the array
  * Return: nothing
  */
-int print_rev_array(unsigned long int max_size_array, char *array)
+int print_rev_array(unsigned int max_size_array, char *array)
 {
-	unsigned long int i;
+	unsigned int i;
 
 	while (max_size_array)
 	{
@@ -41,9 +41,9 @@ int print_rev_array(unsigned long int max_size_array, char *array)
  * @n: number
  * Return: the array filled
  */
-char *fill_array_positive(char *array, unsigned long int n)
+char *fill_array_positive(char *array, unsigned int n)
 {
-	unsigned long int i;
+	unsigned int i;
 
 	i = 0;
 	while (n > 0)
@@ -62,7 +62,7 @@ char *fill_array_positive(char *array, unsigned long int n)
  * @counter: size to allocate
  * Return: array mallocate
  */
-char *fill_binary(unsigned long int nb, unsigned long int counter)
+char *fill_binary(unsigned int nb, unsigned int counter)
 {
 	char *array;
 
@@ -80,12 +80,10 @@ char *fill_binary(unsigned long int nb, unsigned long int counter)
  */
 int print_binary(va_list arg)
 {
-	unsigned long int n = va_arg(arg, unsigned long int), counter = 0;
+	unsigned int n = va_arg(arg, unsigned int), counter = 0;
 	int i = 0;
 	char *array;
 
-	if (n > 4294967295)
-		n = 4294967295;
 	if (n == 0)
 	{
 		_putchar(n + '0');
