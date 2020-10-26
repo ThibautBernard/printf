@@ -7,7 +7,7 @@
  *
  * Return: character converted
  */
-char char_hexa(unsigned long int n)
+char char_hexa(unsigned int n)
 {
 	char *hexa = "abcdef";
 	char *decimal = "012345";
@@ -29,9 +29,9 @@ char char_hexa(unsigned long int n)
  * @array: the array
  * Return: nothing
  */
-int print_rev_array_hexa(unsigned long int max_size_array, char *array)
+int print_rev_array_hexa(unsigned int max_size_array, char *array)
 {
-	unsigned long int i;
+	unsigned int i;
 
 	while (max_size_array)
 	{
@@ -50,9 +50,9 @@ int print_rev_array_hexa(unsigned long int max_size_array, char *array)
  * @n: number
  * Return: the array filled
  */
-char *fill_array_positive_hexa(char *array, unsigned long int n)
+char *fill_array_positive_hexa(char *array, unsigned int n)
 {
-	unsigned long int i, res = 0;
+	unsigned int i, res = 0;
 	char hexa = '0';
 
 	i = 0;
@@ -77,7 +77,7 @@ char *fill_array_positive_hexa(char *array, unsigned long int n)
  * @counter: size to allocate
  * Return: array mallocate
  */
-char *fill_hexa(unsigned long int nb, unsigned long int counter)
+char *fill_hexa(unsigned int nb, unsigned int counter)
 {
 	char *array;
 
@@ -96,13 +96,11 @@ char *fill_hexa(unsigned long int nb, unsigned long int counter)
  */
 int print_hexa(va_list args)
 {
-	unsigned long int n = va_arg(args, unsigned long int), i = 0;
+	unsigned int n = va_arg(args, unsigned int), i = 0;
 	int counter = 0;
 	char *remainder;
 	char hexa = '0';
 
-	if (n > 4294967295)
-		n = 4294967295;
 	if (n < 10)
 	{
 		_putchar(n + '0');

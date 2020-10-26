@@ -28,7 +28,7 @@ int print_pointeur(va_list arg);
 int print_hexa(va_list arg);
 int print_hexaUpper(va_list arg);
 int print_rev_array(unsigned int max_size_array, char *array);
-int print_rev_array_hexa(unsigned long int max_size_array, char *array);
+int print_rev_array_hexa(unsigned int max_size_array, char *array);
 unsigned long int _pow_recursion(unsigned int x, unsigned int y);
 int print_null(void);
 int print_rot13(va_list a);

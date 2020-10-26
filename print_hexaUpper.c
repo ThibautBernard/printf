@@ -7,7 +7,7 @@
  *
  * Return: character converted
  */
-char char_hexaUpper(unsigned long int n)
+char char_hexaUpper(unsigned int n)
 {
 	char *hexa = "ABCDEF";
 	char *decimal = "012345";
@@ -29,9 +29,9 @@ char char_hexaUpper(unsigned long int n)
  * @n: number
  * Return: the array filled
  */
-char *fill_array_positive_hexaUpper(char *array, unsigned long int n)
+char *fill_array_positive_hexaUpper(char *array, unsigned int n)
 {
-	unsigned long int i, res = 0;
+	unsigned int i, res = 0;
 	char hexa = '0';
 
 	i = 0;
@@ -56,7 +56,7 @@ char *fill_array_positive_hexaUpper(char *array, unsigned long int n)
  * @counter: size to allocate
  * Return: array mallocate
  */
-char *fill_hexaUpper(unsigned long int nb, unsigned long int counter)
+char *fill_hexaUpper(unsigned int nb, unsigned int counter)
 {
 	char *array;
 
@@ -75,13 +75,11 @@ char *fill_hexaUpper(unsigned long int nb, unsigned long int counter)
  */
 int print_hexaUpper(va_list args)
 {
-	unsigned long int n = va_arg(args, unsigned long int), i = 0;
+	unsigned int n = va_arg(args, unsigned int), i = 0;
 	int counter = 0;
 	char *remainder;
 	char hexa = '0';
 
-	if (n > 4294967295)
-		n = 4294967295;
 	if (n < 10)
 	{
 		_putchar(n + '0');
