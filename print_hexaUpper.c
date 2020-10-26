@@ -1,13 +1,13 @@
 #include "holberton.h"
 #include <stdio.h>
 /**
- * char_hexaUpper - prints conversion decimal to hexadecimal
+ * char_hexaUpper - convert decimal to hexadecimal uppercase
  *
- * @n: va_list
+ * @n: the int to converted
  *
- * Return: the caracter converted in hexadecimal
+ * Return: character converted
  */
-char char_hexaUpper(unsigned int n)
+char char_hexaUpper(unsigned long int n)
 {
 	char *hexa = "ABCDEF";
 	char *decimal = "012345";
@@ -23,19 +23,65 @@ char char_hexaUpper(unsigned int n)
 	return ('\0');
 }
 /**
- * print_hexaUpper - converts decimal into hexadecimal Uppercase
+ * *fill_array_positive_hexaUpper - fill array of 0 to 9, then A to F
+ * only if the n is positive
+ * @array: the array to fill
+ * @n: number
+ * Return: the array filled
+ */
+char *fill_array_positive_hexaUpper(char *array, unsigned long int n)
+{
+	unsigned long int i, res = 0;
+	char hexa = '0';
+
+	i = 0;
+	while (n > 0)
+	{
+		res = n % 16;
+		if (res >= 10)
+			hexa = char_hexaUpper(res);
+		else
+			hexa = res + '0';
+		array[i] = hexa;
+		n = (n / 16);
+		i++;
+	}
+	array[i] = '\0';
+	return (array);
+}
+/**
+ * fill_hexaUpper - create array of size counter and malloc it
+ * and call the function to fill the array and reverse
+ * @nb: number to convert
+ * @counter: size to allocate
+ * Return: array mallocate
+ */
+char *fill_hexaUpper(unsigned long int nb, unsigned long int counter)
+{
+	char *array;
+
+	array = malloc(sizeof(char) * (counter + 1));
+	if (array == NULL)
+		return (NULL);
+	print_rev_array_hexa((counter - 1), fill_array_positive_hexaUpper(array, nb));
+	return (array);
+}
+/**
+ * print_hexaUpper - convert a decimal into a hexadecimal uppercase
  *
- * @args: va_list
+ *@args: va_list
  *
- * Return: the length of the hexadecimal
+ * Return: length of the hexadecimal converted
  */
 int print_hexaUpper(va_list args)
 {
-	unsigned int n = va_arg(args, unsigned int), i = 0, res = 0;
+	unsigned long int n = va_arg(args, unsigned long int), i = 0;
 	int counter = 0;
 	char *remainder;
 	char hexa = '0';
 
+	if (n > 4294967295)
+		n = 4294967295;
 	if (n < 10)
 	{
 		_putchar(n + '0');
@@ -52,21 +98,7 @@ int print_hexaUpper(va_list args)
 		counter++;
 		i++;
 	}
-	remainder = malloc(sizeof(unsigned int) * (counter + 1));
-	i = 0;
-	while (n > 0)
-	{
-		res = n % 16;
-		if (res >= 10)
-			hexa = char_hexaUpper(res);
-		else
-			hexa = res + '0';
-		remainder[i] = hexa;
-		n = (n / 16);
-		i++;
-	}
-	remainder[i] = '\0';
-	print_rev_array_hexa((counter - 1), remainder);
+	remainder = fill_hexaUpper(n, counter);
 	free(remainder);
 	return (counter);
 }
