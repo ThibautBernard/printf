@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 /**
  * _pow_recursion - number pow
  * @x: number given
@@ -21,14 +20,19 @@ unsigned int _pow_recursion(unsigned int x, unsigned int y)
  * @array: the array
  * Return: nothing
  */
-void print_rev_array(unsigned int max_size_array, unsigned int *array)
+int print_rev_array(unsigned int max_size_array, char *array)
 {
+	int i;
+
 	while (max_size_array)
 	{
 		_putchar(array[max_size_array] + '0');
 		max_size_array--;
+		i++;
 	}
+	i++;
 	_putchar(array[max_size_array] + '0');
+	return (i);
 }
 /**
  * *fill_array_positive - fill array of 0 or 1
@@ -37,7 +41,7 @@ void print_rev_array(unsigned int max_size_array, unsigned int *array)
  * @n: number
  * Return: the array filled
  */
-unsigned int *fill_array_positive(unsigned int *array, unsigned int n)
+char *fill_array_positive(char *array, unsigned int n)
 {
 	unsigned int i;
 
@@ -52,6 +56,23 @@ unsigned int *fill_array_positive(unsigned int *array, unsigned int n)
 	return (array);
 }
 /**
+ * fill_binary - create array of size counter and malloc it
+ * and call the function to fill the array and reverse
+ * @nb: number to convert
+ * @counter: size to allocate
+ * Return: array mallocate
+ */
+char *fill_binary(unsigned int nb, unsigned int counter)
+{
+	char *array;
+
+	array = malloc(sizeof(char) * (counter + 1));
+	if (array == NULL)
+		return (NULL);
+	print_rev_array((counter - 1), fill_array_positive(array, nb));
+	return (array);
+}
+/**
  * print_binary - main function to convert decimal to
  * binary
  * @arg: the number to convert
@@ -59,25 +80,21 @@ unsigned int *fill_array_positive(unsigned int *array, unsigned int n)
  */
 int print_binary(va_list arg)
 {
-	unsigned int i, counter = 0, *array, n = va_arg(arg, unsigned int);
+	unsigned int n = va_arg(arg, unsigned int), counter = 0;
+	int i = 0;
+	char *array;
 
-	i = 0;
 	if (n < 2)
 	{
 		_putchar(n + '0');
 		return (1);
 	}
-	else if (n > 0)
+	while (_pow_recursion(2, i) <= n)
 	{
-		while (_pow_recursion(2, i) <= n)
-		{
-			counter++;
-			i++;
-		}
-		array = malloc(sizeof(unsigned int) * (counter + 1));
-		print_rev_array((counter - 1), fill_array_positive(array, n));
-		free(array);
-		return (counter);
+		counter++;
+		i++;
 	}
-	return (0);
+	array = fill_binary(n, counter);
+	free(array);
+	return (counter);
 }

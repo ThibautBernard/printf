@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
  * check_alphab - check if other than alphab
  * @s: string to check
@@ -11,7 +11,7 @@ int check_alphab(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if ((s[i] <= 'a' && s[i] >= 'z') || (s[i] <= 'A' && s[i] >= 'Z'))
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
 			return (1);
 	}
 	return (0);
@@ -30,6 +30,8 @@ char *rot13(char *s)
 
 	length = _strlen(s);
 	string_to_fill = malloc(sizeof(char) * (length + 1));
+	if (string_to_fill == NULL)
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -59,9 +61,7 @@ int print_rot13(va_list a)
 	char *str_formated;
 	int i;
 
-	if (check_alphab(s) == 1)
-		return (0);
-	if (s == NULL)
+	if (s == NULL || check_alphab(s) == 0)
 		return (print_null());
 	str_formated = rot13(s);
 	for (i = 0; str_formated[i] != '\0'; i++)
