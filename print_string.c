@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * print_str - prints the string (null)
+ * print_null - prints the string (null)
  *
  * Return: length of (null)
  */

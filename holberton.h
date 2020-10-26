@@ -30,4 +30,9 @@ int print_rev_array(unsigned int max_size_array, char *array);
 int print_rev_array_hexa(unsigned int max_size_array, char *array);
 unsigned int _pow_recursion(unsigned int x, unsigned int y);
 char *fill_binary(unsigned int nb, unsigned int counter);
+int print_null(void);
+int print_binary(va_list arg);
+int print_rot13(va_list a);
+int print_reverse(va_list a);
+
 #endif
