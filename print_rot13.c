@@ -4,15 +4,10 @@
  * @s: string to check
  * Return: 1 if other than alphab
  */
-int check_alphab(char *s)
+int check_alphab(char s)
 {
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
-			return (1);
-	}
+	if ((s >= 'a' && s <= 'z') || (s >= 'A' && s <= 'Z'))
+		return (1);
 	return (0);
 }
 /**
@@ -37,11 +32,12 @@ char *rot13(char *s)
 		y = 0;
 		while (letter[y] != '\0')
 		{
-			if (letter[y] == s[i])
+			if (letter[y] == s[i] && check_alphab(s[i]) == 1)
 			{
 				string_to_fill[i] = after[y];
 				break;
 			}
+			string_to_fill[i] = s[i];
 			y++;
 		}
 		i++;
@@ -60,7 +56,7 @@ int print_rot13(va_list a)
 	char *str_formated;
 	int i;
 
-	if (check_alphab(s) == 0)
+	if (_strlen(s) == 0)
 		return (0);
 	if (s == NULL)
 		return (print_null());
