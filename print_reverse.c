@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 
 /**
  * rev - malloc an array and fill
@@ -41,8 +41,8 @@ int print_reverse(va_list a)
 		return (print_null());
 	length = _strlen(s);
 	str_filled = rev(s, length);
-	for (i = 0; i < length; i++)
+	for (i = 0; str_filled[i] != '\0'; i++)
 		_putchar(str_filled[i]);
 	free(str_filled);
-	return ((i));
+	return (i);
 }
