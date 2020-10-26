@@ -145,7 +145,7 @@ int print_string_non_printable(va_list a)
 		for (i = 0; string_convert[i] != '\0'; i++)
 			_putchar(string_convert[i]);
 		free(string_convert);
-		return (counter - 1);
+		return (counter);
 	}
 	return (0);
 }
