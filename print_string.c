@@ -16,7 +16,23 @@ int print_null(void)
 	}
 	return (6);
 }
+/**
+ * _print_nil - prints the string (nil)
+ *
+ * Return: length of (nil)
+ */
+int _print_nil(void)
+{
+	int i = 0;
+	char *string = "(nil)";
 
+	while (string[i] != '\0')
+	{
+		_putchar(string[i]);
+		i++;
+	}
+	return (i);
+}
 /**
  * print_string - print a string given
  * @arg: the string given

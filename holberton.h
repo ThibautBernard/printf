@@ -16,6 +16,7 @@ typedef struct filter
 	int (*ptr_f)(va_list);
 } filt;
 
+int _print_nil(void);
 int _putchar(char c);
 int _strlen(char *s);
 int print_char(va_list);
