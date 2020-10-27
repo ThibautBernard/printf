@@ -25,6 +25,7 @@ int _printf(const char *format, ...)
 {"o", print_octal}, {"x", print_hexa}, {"X", print_hexaUpper},
 {"R", print_rot13}, {"r", print_reverse}, {"S", print_string_non_printable},
 {"p", print_pointeur},{NULL, NULL}};
+
 	va_list args;
 
 	va_start(args, format);
