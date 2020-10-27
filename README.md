@@ -35,6 +35,7 @@ Printf is a function in C that write output to stdout, taking arguments [%] in o
   - -**s** ```print a string```
   - -**u** ```print an unsigned integer``` 
   - -**x** ```convert an unsigned int into a hexadecimal && print```
+  - -**b** ```convert an unsigned int into binart && print```
   - -**o** ```convert an unsigned int into an octal && print``` 
   - -**X** ```convert an unsigned int into a hexadecimal UPPERCASE && print```
   - -**r** ```reverse a string && print```
