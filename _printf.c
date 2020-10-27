@@ -21,12 +21,10 @@ int _printf(const char *format, ...)
 {
 	int i, y, counter = 0, sum = 0, passed = 0;
 	filt arr[] = {{"c", print_char}, {"s", print_string}, {"d", print_decimal},
-		      {"i", print_decimal}, {"b", print_binary},
-		      {"u", print_unsigned}, {"o", print_octal},
-		      {"x", print_hexa}, {"X", print_hexaUpper},
-		      {"R", print_rot13}, {"r", print_reverse},
-		      {"p", print_pointeur}, {NULL, NULL}};
-
+{"i", print_decimal}, {"b", print_binary}, {"u", print_unsigned},
+{"o", print_octal}, {"x", print_hexa}, {"X", print_hexaUpper},
+{"R", print_rot13}, {"r", print_reverse}, {"S", print_string_non_printable},
+{NULL, NULL}};
 	va_list args;
 
 	va_start(args, format);
@@ -50,7 +48,7 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				_putchar(format[i]);
 				counter += 2;
-			}				
+			}
 			if (format[i] == '%' && format[i - 1] == '%')
 				counter = _print_count(format[i], counter);
 		}

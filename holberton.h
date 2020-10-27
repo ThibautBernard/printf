@@ -34,5 +34,5 @@ unsigned long int _pow_recursion(unsigned int x, unsigned int y);
 int print_null(void);
 int print_rot13(va_list a);
 int print_reverse(va_list a);
-
+int print_string_non_printable(va_list a);
 #endif
