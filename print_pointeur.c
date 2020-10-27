@@ -106,6 +106,7 @@ int print_pointeur(va_list args)
 	char *remainder;
 	char hexa = '0';
 
+	printf("\n n : %lu", n);
 	if (n == 0)
 	{
 		counter = _print_nil();
@@ -129,6 +130,7 @@ int print_pointeur(va_list args)
 	}
 	counter += 2;
 	remainder = fill_hexa_p(n, counter);
-	free(remainder);
+	if (remainder != NULL)
+		free(remainder);
 	return (counter);
 }
