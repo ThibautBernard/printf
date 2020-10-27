@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 /**
  * char_hexaa - return hexadecim of a number
  * @i: integer to transform in hexa
@@ -42,34 +41,54 @@ char *convert_hexa(int i)
 		res = i % 16;
 		if (res >= 10)
 		{
-			if (res < 16)
-				str[y] = '0';
-			else if (res > 16 && res < 32)
-				str[y] = '1';
-			else if (res >= 127)
-				str[y] = '7';
-			y++;
 			str[y] = char_hexaa(res);
-			y++;
-			str[y] = '\0';
 		}
 		else
 		{
-			if (res < 16)
-				str[y] = '0';
-			else if (res > 16 && res < 32)
-				str[y] = '1';
-			else if (res >= 127)
-				str[y] = '7';
-			y++;
 			str[y] = res + '0';
-			y++;
-			str[y] = '\0';
-			}
-			i = (i / 16);
+		}
+		i = (i / 16);
 		y++;
 	}
+	if (i < 16)
+	{
+		str[y] = '0';
+	}
 	return (str);
+}
+/**
+ * fill_hexa_string - fill the array of hexadecimal of
+ * character non printable
+ * @str_to_fill: string to fill
+ * @s: original string given
+ * @i: index of s, where non printable char is
+ * @y: index of str_to_fill, to fill
+ * Return: y, the last index where filled the hexa
+ */
+int fill_hexa_string(char *str_to_fill, char *s, int i, int y)
+{
+	int ct_counter = 0, c = 0, t;
+	char *ct;
+
+	c = 1;
+	ct_counter = 1;
+	while (c < 3)
+	{
+		if (c == 1)
+		{
+			for (t = 0; t < 1; t++)
+				str_to_fill[y] = '\\';
+			y++;
+			str_to_fill[y] = 'x';
+			ct = convert_hexa(s[i]);
+		}
+		y++;
+		str_to_fill[y] = ct[ct_counter];
+		c++;
+		ct_counter--;
+	}
+	free(ct);
+	return (y);
 }
 /**
  * fill_string - fill a string with hexa && string original that
@@ -80,42 +99,27 @@ char *convert_hexa(int i)
  */
 char *fill_string(char *s, int length)
 {
-	int i, c, y, ct_counter = 0, t = 0;
-	char *ct;
-	char *str_filled = "d";
+	int i, y;
+	char *str_filled;
 
 	y = 0;
 	str_filled = malloc(sizeof(char) * (length + 1));
 	if (str_filled == NULL)
 		return (NULL);
-	for (i = 0; s[i] != '\0'; i++)
+	if (str_filled != NULL)
 	{
-		if ((s[i] >= 0 && s[i] <= 32) || (s[i] >= 127))
+		for (i = 0; s[i] != '\0'; i++)
 		{
-			c = 1;
-			while (c < 3)
+			if ((s[i] >= 0 && s[i] <= 32) || (s[i] >= 127))
 			{
-				if (c == 1)
-				{
-					for (t = 0; t < 1; t++)
-						str_filled[y] = '\\';
-					y++;
-					str_filled[y] = 'x';
-					ct = convert_hexa(s[i]);
-				}
-				y++;
-				str_filled[y] = ct[ct_counter];
-				c++;
-				ct_counter++;
+				y = fill_hexa_string(str_filled, s, i, y);
 			}
+			else
+				str_filled[y] = s[i];
+			y++;
 		}
-		else
-			str_filled[y] = s[i];
-		y++;
+		str_filled[y] = '\0';
 	}
-	str_filled[y] = '\0';
-	if (ct != NULL)
-		free(ct);
 	return (str_filled);
 }
 /**

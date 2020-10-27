@@ -23,6 +23,37 @@ Print a decimal (base 10) number
 .TP
 .B -i
 Print an integer in base 10
+.TP
+.B -b
+Print unsigned int converted to binary
+.TP
+.B -u
+Print an unsigned decimal (base 10) number
+.TP
+.B -o
+Print a number in octal (base 8)
+.TP
+.B -x
+Print a number in hexidecimal (base 16)
+.TP
+.B -X
+Print a number in hexidecimal UPPERCASE (base 16)
+.TP
+.B -S
+Print a string with non printable characters
+.TP
+.B -p
+Print adress in memory of variable in hexadecimal
+.TP
+.B -r
+Print a reversed string
+.TP
+.B -R
+Print a string in ROT13 format
+.TP
+.B -%
+Print one %
+.TP
 .SH EXAMPLES
 The following examples will show you how to use the function _printf()
 .PP
