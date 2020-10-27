@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 /**
  * char_hexa_p - convert decimal to hexadecimal
  *
@@ -31,7 +30,7 @@ char char_hexa_p(unsigned long int n)
  */
 int print_rev_array_hexa_p(unsigned long int max_size_array, char *array)
 {
-	unsigned long int i;
+	unsigned long int i = 0;
 
 	while (max_size_array)
 	{
@@ -52,8 +51,10 @@ int print_rev_array_hexa_p(unsigned long int max_size_array, char *array)
  */
 char *fill_array_positive_hexa_p(char *array, unsigned long int n)
 {
-	unsigned long int i, res = 0;
-	char hexa = '0';
+	unsigned long int i = 0, res = 0;
+	char hexa;
+	char a = 'x';
+	int b = 0;
 
 	i = 0;
 	if (array)
@@ -69,8 +70,10 @@ char *fill_array_positive_hexa_p(char *array, unsigned long int n)
 			n = (n / 16);
 			i++;
 		}
-		array[i++] = 'x';
-		array[i++] = 0 + '0';
+		array[i] = a;
+		i++;
+		array[i] = b + '0';
+		i++;
 		array[i] = '\0';
 	}
 	return (array);
@@ -89,7 +92,8 @@ char *fill_hexa_p(unsigned long int nb, unsigned long int counter)
 	array = malloc(sizeof(char) * (counter + 1));
 	if (array == NULL)
 		return (NULL);
-	print_rev_array_hexa_p((counter - 1), fill_array_positive_hexa_p(array, nb));
+	if (array != NULL)
+		print_rev_array_hexa_p((counter - 1), fill_array_positive_hexa_p(array, nb));
 	return (array);
 }
 /**
@@ -111,6 +115,7 @@ int print_pointeur(va_list args)
 		counter = _print_nil();
 		return (counter);
 	}
+
 	if (n < 10)
 	{
 		_putchar(n + '0');
