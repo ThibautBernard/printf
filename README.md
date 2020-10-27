@@ -23,6 +23,10 @@ Printf is a function in C that write output to stdout, taking arguments [%] in o
 <br /> Printf return the number of characters printed. 
 ![Printf_arguments](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Printf.svg/1280px-Printf.svg.png)
 [Source](https://fr.wikipedia.org/wiki/Printf#/media/Fichier:Printf.svg)
+
+## Prototype :
+* ``` int _printf(const char *format, ...)```
+
 ## Manage the following conversions: 
  ##### Accessible with **%** before 
   - -**c** ```print a character``` 
@@ -39,7 +43,7 @@ Printf is a function in C that write output to stdout, taking arguments [%] in o
   - -**p** ```print the adress of a pointer in hexadecimal```
   - -**%** ```print a simple %```
  
-## COMPILE WITH OUR  _PRINTF
+## COMPILE OUR _PRINTF
 * ``` #include "holberton.h" ```
 * ``` $ gcc -Wall -Werror -Wextra -pedantic *.c -o the_best_printf ```
 * ``` $ ./the_best_printf ```
