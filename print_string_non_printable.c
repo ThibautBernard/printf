@@ -42,32 +42,18 @@ char *convert_hexa(int i)
 		res = i % 16;
 		if (res >= 10)
 		{
-			if (res < 16)
-				str[y] = '0';
-			else if (res > 16 && res < 32)
-				str[y] = '1';
-			else if (res >= 127)
-				str[y] = '7';
-			y++;
 			str[y] = char_hexaa(res);
-			y++;
-			str[y] = '\0';
 		}
 		else
 		{
-			if (res < 16)
-				str[y] = '0';
-			else if (res > 16 && res < 32)
-				str[y] = '1';
-			else if (res >= 127)
-				str[y] = '7';
-			y++;
 			str[y] = res + '0';
-			y++;
-			str[y] = '\0';
-			}
-			i = (i / 16);
+		}
+		i = (i / 16);
 		y++;
+	}
+	if (i < 16)
+	{
+		str[y] = '0';
 	}
 	return (str);
 }
@@ -80,7 +66,7 @@ char *convert_hexa(int i)
  */
 char *fill_string(char *s, int length)
 {
-	int i, c, y, ct_counter = 0, t = 0;
+	int i, c, y, ct_counter, t = 0;
 	char *ct;
 	char *str_filled = "d";
 
@@ -93,6 +79,7 @@ char *fill_string(char *s, int length)
 		if ((s[i] >= 0 && s[i] <= 32) || (s[i] >= 127))
 		{
 			c = 1;
+			ct_counter = 1;
 			while (c < 3)
 			{
 				if (c == 1)
@@ -106,7 +93,7 @@ char *fill_string(char *s, int length)
 				y++;
 				str_filled[y] = ct[ct_counter];
 				c++;
-				ct_counter++;
+				ct_counter--;
 			}
 		}
 		else
