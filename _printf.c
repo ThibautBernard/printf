@@ -43,14 +43,14 @@ int _printf(const char *format, ...)
 					passed = 1;
 				}
 			}
-			if (passed == 0)
+			if (format[i] == '%' && format[i - 1] == '%')
+				counter = _print_count(format[i], counter);
+			else if (passed == 0)
 			{
 				_putchar('%');
 				_putchar(format[i]);
 				counter += 2;
 			}
-			if (format[i] == '%' && format[i - 1] == '%')
-				counter = _print_count(format[i], counter);
 		}
 		else
 			counter = _print_count(format[i], counter);
