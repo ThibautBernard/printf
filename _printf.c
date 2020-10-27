@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 {"i", print_decimal}, {"b", print_binary}, {"u", print_unsigned},
 {"o", print_octal}, {"x", print_hexa}, {"X", print_hexaUpper},
 {"R", print_rot13}, {"r", print_reverse}, {"S", print_string_non_printable},
-{NULL, NULL}};
+{"p", print_pointeur}, {NULL, NULL}};
 
 	va_list args;
 
