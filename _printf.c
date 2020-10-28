@@ -19,7 +19,7 @@ int _print_count(char format, int counter)
  */
 int _printf(const char *format, ...)
 {
-	int i, y, counter = 0, sum = 0, passed = 0;
+	int i = 0, y, counter = 0, sum = 0, passed = 0;
 	filt arr[] = {{"c", print_char}, {"s", print_string}, {"d", print_decimal},
 {"i", print_decimal}, {"b", print_binary}, {"u", print_unsigned},
 {"o", print_octal}, {"x", print_hexa}, {"X", print_hexaUpper},
@@ -27,10 +27,10 @@ int _printf(const char *format, ...)
 {"p", print_pointeur}, {NULL, NULL}};
 	va_list args;
 
-	if (!(format) || format[i] == '%' && format[i + 1] == '\0')
+	if (!(format) || (format[i] == '%' && format[i + 1] == '\0'))
 		return (-1);
 	va_start(args, format);
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (; format && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
