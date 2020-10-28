@@ -110,7 +110,7 @@ char *fill_string(char *s, int length)
 	{
 		for (i = 0; s[i] != '\0'; i++)
 		{
-			if ((s[i] >= 0 && s[i] <= 32) || (s[i] >= 127))
+			if ((s[i] >= 0 && s[i] < 32) || (s[i] >= 127))
 			{
 				y = fill_hexa_string(str_filled, s, i, y);
 			}
@@ -137,9 +137,9 @@ int print_string_non_printable(va_list a)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if ((s[i] >= 0 && s[i] <= 32) || (s[i] >= 127))
+		if ((s[i] >= 0 && s[i] < 32) || (s[i] >= 127))
 		{
-			counter += 3;
+			counter += 4;
 		}
 		counter++;
 	}
