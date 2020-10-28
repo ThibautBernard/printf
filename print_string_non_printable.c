@@ -141,7 +141,8 @@ int print_string_non_printable(va_list a)
 		{
 			counter += 4;
 		}
-		counter++;
+		else
+			counter++;
 	}
 	string_convert = fill_string(s, counter);
 	if (string_convert != NULL)
